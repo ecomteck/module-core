@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ecomteck
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Ecomteck.com license that is
+ * available through the world-wide-web at this URL:
+ * https://ecomteck.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Ecomteck
+ * @package     Ecomteck_Core
+ * @copyright   Copyright (c) 2018 Ecomteck (https://ecomteck.com/)
+ * @license     https://ecomteck.com/LICENSE.txt
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Ecomteck_Core::menu" title="Ecomteck Extensions" sortOrder="50" >
+                    <resource id="Ecomteck_Core::documentation" title="Documentations" sortOrder="50" >
+                        <resource id="Ecomteck_Core::userguide" title="User Guides" sortOrder="50" />
+                    </resource>
+                    <resource id="Ecomteck_Core::activate" title="Active Module" sortOrder="70" />
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Ecomteck_Core::configuration" title="Ecomteck Information" sortOrder="10"/>
+                            <resource id="Ecomteck_Core::marketplace" title="Ecomteck Marketplace" sortOrder="10"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

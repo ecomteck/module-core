@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Ecomteck
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ecomteck.com license that is
+ * available through the world-wide-web at this URL:
+ * https://ecomteck.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Ecomteck
+ * @package     Ecomteck_Core
+ * @copyright   Copyright (c) 2018 Ecomteck (https://ecomteck.com/)
+ * @license     https://ecomteck.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Notification\MessageList">
+        <arguments>
+            <argument name="messages" xsi:type="array">
+                <item name="ecomteck_validate_message" xsi:type="string">Ecomteck\Core\Model\Message\Validate</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Config\Model\Config\Structure\Data">
+        <plugin name="ecomteck_module_activate" type="Ecomteck\Core\Model\Config\Structure\Data"/>
+    </type>
+</config>
