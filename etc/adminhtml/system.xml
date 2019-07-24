@@ -15,323 +15,47 @@
  * version in the future.
  *
  * @category    Ecomteck
- * @package     Ecomteck_OneStepCheckout
+ * @package     Ecomteck_Core
  * @copyright   Copyright (c) 2018 Ecomteck (https://ecomteck.com/)
  * @license     https://ecomteck.com/LICENSE.txt
  */
--->
+ -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="one_step_checkout" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-            <label>One Step Checkout</label>
+        <tab id="ecomteck" translate="label" sortOrder="100">
+            <label><![CDATA[<img src="https://ecomteck.com/wp-content/uploads/2018/02/ecomteck-logo.png" alt="Ecomteck" style="vertical-align:middle;width:80%"/>]]></label>
+        </tab>
+        <section id="ecomteck" translate="label" type="text" sortOrder="8888" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Information</label>
             <tab>ecomteck</tab>
-            <resource>Ecomteck_OneStepCheckout::one_step_checkout</resource>
-            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>General</label>
-                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enable One Step Checkout Solution</label>
+            <resource>Ecomteck_Core::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="notice_enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Notifications</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Enable One Step Checkout Solution.]]></comment>
+                    <comment>Select Yes to get latest updates from Ecomteck.</comment>
                 </field>
-                <field id="router_name" translate="label comment" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Router Name</label>
-                    <comment>
-                        <![CDATA[
-                            Example: checkout.html -> http://example.com/checkout.html
-                        ]]>
-                    </comment>
-                </field>
-                <field id="default_shipping_method" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Default Shipping Method</label>
-                    <source_model>Magento\Shipping\Model\Config\Source\Allmethods</source_model>
-                    <comment><![CDATA[When totals full mode is enabled, this shipping method will be used to make the initial shipping amount estimate.]]></comment>
-                </field>
-                <field id="default_payment_method" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Default Payment Method</label>
-                    <source_model>Magento\Payment\Model\Config\Source\Allmethods</source_model>
-                    <comment><![CDATA[Default Payment Method]]></comment>
-                </field>
-                <field id="allow_update_product_qty" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Allow Update Product Quantity</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Allow customer update product item quantity.]]></comment>
-                </field>
-                <field id="allow_remove_product" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Allow Remove Product</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Allow customer remove product item.]]></comment>
-                </field>
-                <field id="allow_edit_product_option" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Allow Edit Product Option</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Allow customer edit product option.]]></comment>
-                </field>
-                
-                <field id="add_gift_message_per_item" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Add Gift Message Per Item</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Allow customer add gift message per item.]]></comment>
-                </field>
-                <field id="add_gift_message_per_order" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Add Gift Message Per Order</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Allow customer add gift message per order.]]></comment>
-                </field>
-                <field id="redirect_to_checkout" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Redirect To Checkout</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Sends the customer to the checkout immediately after adding a product to cart.]]></comment>
-                </field>
-            </group>
-            <group id="display" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Display</label>
-                <field id="layout" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Checkout Page Layout</label>
-                    <source_model>Ecomteck\OneStepCheckout\Model\System\Config\Layout</source_model>
-                </field>
-                <field id="disable_telephone" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Disable Telephone Field</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="disable_company" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Disable Company Field</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="disable_header" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Disable Header</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="disable_footer" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Disable Footer</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <!--field id="disable_copyright" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Disable Copyright</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Disables the copyright bar in the bottom part of the page.]]></comment>
-                </field-->
-                <!--field id="display_logo" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Display Logo</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Best used in conjunction with the Disable Header and Disable Footer options.]]></comment>
-                </field-->
-                <field id="disable_login_popup" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Disable Login Popup</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Disables the login pop-up in the top-right corner of checkout.
-                                      Existing customers can still login when providing their e-mail in the checkout, regardless of this setting.]]></comment>
-                </field>
-                <field id="move_cart_items" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Move Cart Items</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[This moves the location of the cart items in the checkout summary sidebar to be above the totals.]]></comment>
-                </field>
-                <field id="always_show_cart_items" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Always Show Cart Items</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[By default, the item block in the sidebar isn't expanded until shipping step has been processed. Use this option to always show items.]]></comment>
-                </field>
-                <field id="move_billing_before_shipping" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Move Billing Address Before Shipping Address</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Move Billing Address Before Shipping Address.]]></comment>
-                </field>
-                <field id="disable_coupon_code" translate="label" type="select" sortOrder="115" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Disable Coupon Code</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="coupon_code_collapse_state" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Coupon code initial collapse state</label>
-                    <source_model>Ecomteck\OneStepCheckout\Model\System\Config\Collapse</source_model>
-                </field>
-                <field id="disable_gift_options" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Disable Gift Options</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="gift_options_collapse_state" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Gift options initial collapse state</label>
-                    <source_model>Ecomteck\OneStepCheckout\Model\System\Config\Collapse</source_model>
-                </field>
-                <field id="footer_content" translate="label comment" sortOrder="140" type="editor" showInStore="1" showInDefault="1" >
-                    <label>Footer Content</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Editor</frontend_model>
-                    <comment><![CDATA[You can edit this field to add content to the bottom right of your checkout. This is useful for displaying things such as supported payment methods.]]></comment>
-                </field>
-            </group>
-            <group id="shipping" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Shipping</label>
-                <field id="hide_shipping_methods" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Hide Shipping Methods</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Shipping methods are not shown when there is only a single available rate.]]></comment>
-                </field>
-                <field id="hide_shipping_title" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Hide Shipping Method Title</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Shipping method title is not shown in the summary sidebar. Note that it will still display a price for shipping.]]></comment>
-                </field>
-            </group>
-            <group id="colors" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Colors</label>
-                <field id="main" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Main Color</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Colorpicker</frontend_model>
-                </field>
-                <field id="icon" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Icon Color</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Colorpicker</frontend_model>
-                </field>
-                <field id="button" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Button</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Colorpicker</frontend_model>
-                </field>
-                <field id="gift_message" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Gift Message</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Colorpicker</frontend_model>
-                </field>
-                <field id="order_summary_background" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Order summary background</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Colorpicker</frontend_model>
-                </field>
-                <field id="shipping_methods_background" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Shipping methods background</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Colorpicker</frontend_model>
-                </field>
-                <field id="payment_methods_background" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Payment methods background</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Colorpicker</frontend_model>
-                </field>
-                <field id="account_address_background" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Account and address background</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Colorpicker</frontend_model>
-                </field>
-            </group>
-            <group id="icons" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Icons</label>
-                <field id="account_information" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Account Information Step</label>
-                </field>
-                <field id="shipping_address" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Shipping Address Step</label>
-                </field>
-                <field id="billing_address" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Billing Address Step</label>
-                </field>
-                <field id="shipping_methods" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Shipping Methods Step</label>
-                </field>
-                <field id="payment_methods" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Payment Methods Step</label>
-                </field>
-                <field id="order_summary" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Order Summary Step</label>
-                    <comment>
-                        <![CDATA[
-                            You can use numeric for example: 1 or 2 or 3 ... <br/>
-                            Or Font Awesome for example : f0a6 or f0a6 ... <br/>
-                            Please get icon code point from <a href="https://fontawesome.com/icons">Font Awesome</a>
-                        ]]>
-                    </comment>
-                </field>
-            </group>
-            <group id="geo_ip" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Geo IP</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enabled</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Attempts to automatically detect customer's country.]]></comment>
-                </field>
-            </group>
-            <group id="term" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Term and Conditions</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enabled</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Adds a Term & Conditions component to the final step of the checkout.]]></comment>
-                </field>
-                <field id="checked" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Checked by Default</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Whether the term & condition checkbox is checked by default.]]></comment>
-                </field>
-                <field id="label" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Label</label>
-                </field>
-                <field id="popup_content" translate="label comment" sortOrder="40" type="editor" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Popup Content</label>
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\Editor</frontend_model>
-                    <comment><![CDATA[You can add content for terms popup.]]></comment>
-                </field>
-            </group>
-            <group id="newsletter" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Newsletter</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enabled</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Adds a newsletter subscription component to the final step of the checkout.]]></comment>
-                </field>
-                <field id="checked" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Checked by Default</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Whether the subscribe checkbox is checked by default.]]></comment>
-                </field>
-                <field id="label" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Label</label>
-                </field>
-            </group>
-            <group id="back_to_store" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Back to Store</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enabled</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Adds a Go Back to Store link to the checkout.]]></comment>
-                </field>
-                <field id="label" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Label</label>
-                </field>
-            </group>
-            <group id="auto_complete" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Address Autocomplete</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enabled</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="auto_save_fill_customer_info" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Auto Save and fill customer infomation</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Google Maps API Key</label>
+                <field id="notice_type" translate="label comment" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Category</label>
+                    <source_model>Ecomteck\Core\Model\Config\Source\NoticeType</source_model>
+                    <comment>Select categories that you want to receive notifications</comment>
                     <depends>
-                        <field id="enabled">1</field>
+                        <field id="notice_enable">1</field>
                     </depends>
-                    <comment><![CDATA[Find your API Key here: https://developers.google.com/maps/documentation/javascript/get-api-key]]></comment>
-                </field>
-                <field id="split_street_fields"  translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Split Street Fields</label>
-                    <depends>
-                        <field id="enabled">1</field>
-                    </depends>
-                    <comment><![CDATA[When enabled, will attempt to split the street name and house number when multiple lines are detected. Behavior is unchanged with single address lines.]]></comment>
                 </field>
             </group>
-            <group id="field_config" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Field Config</label>
-                <field id="config" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" canRestore="1">
-                    <frontend_model>Ecomteck\OneStepCheckout\Block\Adminhtml\System\Config\AddressFields</frontend_model>
-                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
-                    <comment>
-                        <![CDATA[
-                            With icon column you can use Font Awesome for example : f0a6 or f0a6 ... <br/>
-                            Please get icon code point from <a href="https://fontawesome.com/icons">Font Awesome</a>
-                        ]]>
-                    </comment>
-                </field>
-            </group>
-            <group id="customize" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Customize</label>
-                <field id="css" type="textarea" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" canRestore="1">
-                </field>
+        </section>
+        <section id="ecomteck_marketplace" translate="label" type="text" sortOrder="9999" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Marketplace</label>
+            <tab>ecomteck</tab>
+            <resource>Ecomteck_Core::marketplace</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Ecomteck Marketplace</label>
+                <frontend_model>Ecomteck\Core\Block\Adminhtml\System\Config\Partners</frontend_model>
+                <comment><![CDATA[
+                <iframe id="mp-core-partners" src="https://ecomteck.com/extensions-iframe/" frameborder="0" scrolling="no" width="100%" height="1700px" style="min-height: 800px;"></iframe>
+                ]]></comment>
             </group>
         </section>
     </system>
