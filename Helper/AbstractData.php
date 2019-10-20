@@ -100,6 +100,16 @@ class AbstractData extends AbstractHelper
         return $this->getConfigGeneral('enabled', $storeId);
     }
 
+    public function getModuleConfig($key, $store = null)
+    {
+        $store = $this->storeManager->getStore($store);
+        $result = $this->scopeConfig->getValue(
+            $key,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store);
+        return $result;
+    }
+
     /**
      * @param string $code
      * @param null $storeId
