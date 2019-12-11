@@ -22,7 +22,7 @@
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="ecomteck" translate="label" sortOrder="300" class="ecomteck-tab">
+        <tab id="ecomteck" translate="label" sortOrder="400" class="ecomteck-tab">
             <label>Ecomteck Extensions</label>
         </tab>
         <section id="ecomteck" translate="label" type="text" sortOrder="8888" showInDefault="1" showInWebsite="0" showInStore="0">
